@@ -1,20 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Layout></Layout>
+    <RobotControlView></RobotControlView>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import Layout from './submodules/base_layout/src/components/interface'
+import RobotControlView from './views/RobotControlView.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Layout
+    RobotControlView,
   }
 }
 </script>
