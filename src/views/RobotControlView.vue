@@ -1,25 +1,19 @@
 <template>
   <div id="mainview">
     <h2>Live Feed</h2>
-    <VideoPlayer></VideoPlayer>
-
+    <hr/>
+    <slot name="videocomponent"></slot>
+    <hr/>
     <br/>
 
     <h2>Controls</h2>
-    <Controls></Controls>
+    <hr/>
+    <slot name="controlcomponent"></slot>
   </div>
 </template>
 
 <script>
-import Controls from "../components/ControlsComponent";
-import VideoPlayer from "../components/VideoPlayerComponent";
 
-export default {
-    components: {
-        VideoPlayer,
-        Controls
-    }
-}
 </script>
 
 <style>

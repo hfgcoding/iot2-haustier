@@ -1,16 +1,27 @@
 <template>
   <div id="app">
-    <RobotControlView></RobotControlView>
+    <RobotControlView>
+      <template v-slot:videocomponent>
+        <VideoPlayer></VideoPlayer>
+      </template>
+      <template v-slot:controlcomponent>
+        <Controls></Controls>
+      </template>
+    </RobotControlView>
   </div>
 </template>
 
 <script>
 import RobotControlView from './views/RobotControlView.vue'
+import Controls from "./components/ControlsComponent";
+import VideoPlayer from "./components/VideoPlayerComponent";
 
 export default {
   name: 'App',
   components: {
     RobotControlView,
+    VideoPlayer,
+    Controls,
   }
 }
 </script>

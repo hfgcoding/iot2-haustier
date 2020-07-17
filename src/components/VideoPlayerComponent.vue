@@ -9,7 +9,8 @@ export default {
     props: {
         srcurl: {
             type: String,
-            default: "http://63.32.119.241:10000/index-lab.jpg"
+            //CHANGEME: hier (vorerst) lokale IP-Adresse des Pi eintragen!
+            default: "http://192.168.1.100:8080/stream.mjpg"
         }
     }
 }

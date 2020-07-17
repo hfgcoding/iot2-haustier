@@ -6,10 +6,10 @@ import App from './App.vue'
 import VueSocketIO from 'vue-socket.io'
 
 Vue.config.productionTip = false
- 
+
 Vue.use(new VueSocketIO({
     debug: true,
-    connection: 'http://63.32.119.241:10000/flobot_control',
+    connection: 'http://63.32.119.241:10000/floprivatbot_control', //WICHTIG: Hier nach dem Slash den Namen eures Bots angeben (wie auf dem Pi festgelegt)
     options: {
       useConnectionNamespace: true
     }
