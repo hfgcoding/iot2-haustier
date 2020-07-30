@@ -38,7 +38,7 @@
 <style>
     #queue .container div {
         display: block;
-        width:600px;
+        width:300px;
         border:1px solid black;
         list-style-type: none;
         height:50px;
@@ -51,6 +51,6 @@
         border-left:5px solid hotpink;
     }
     #queue .container div.isActive {
-        background-color: lightgreen;
+        background-color: lightgoldenrodyellow;
     }
 </style>

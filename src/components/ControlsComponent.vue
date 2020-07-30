@@ -3,9 +3,11 @@
         <strong>Connected: {{connected}}</strong><br><br><br>
         <div class="half">
             <h4>Presets</h4>
-            <button v-on:click="lichtAnschalten()" :disabled="!connected || !amIActive">Licht An</button>
-            <button v-on:click="lichtAusschalten()" :disabled="!connected || !amIActive">Licht Aus</button>
-            <button v-on:click="buttonClick(3)" :disabled="!connected || !amIActive">Position 3</button><br>
+            <button v-on:click="lichtAnschalten()" :disabled="!connected || !amIActive">Position 1</button>&nbsp;
+            <button v-on:click="lichtAusschalten()" :disabled="!connected || !amIActive">Position 2</button>&nbsp;
+            <button v-on:click="buttonClick(3)" :disabled="!connected || !amIActive">Position 3</button><br>&nbsp;
+            <hr/>
+            Override Key: <input type="text" v-model="overridePW" v-on:change="authorize">
         </div>
         <div class="half">
             <h4>Current Waiting Queue {{this.currentTimer}}</h4>
@@ -32,6 +34,9 @@
             },
             lichtAusschalten: function () {
                 this.$socket.emit('lightOff');
+            },
+            authorize: function() {
+                this.$socket.emit('authorize', this.overridePW);
             }
         },
         sockets: {
@@ -60,6 +65,12 @@
             },
             client_name: function(data) {
                 this.clientName = data;
+            },
+            serialresponse: function(data) {
+                console.log("Serial:"+data);
+            },
+            authorized: function(data) {
+                this.authorized = data;
             }
         },
         data: function () {
@@ -69,12 +80,14 @@
                 ownId: "undefined",
                 clientName: "undefined",
                 currentTimer: 0,
+                overridePW: "",
+                authorized: false
             }
         },
         computed: {
             amIActive: function() {
                 if(this.currentQueue.length == 0) return false;
-                return this.currentQueue[1][0].id === this.ownId;
+                return this.currentQueue[1][0].id === this.ownId || this.authorized;
             }
         }
     }
