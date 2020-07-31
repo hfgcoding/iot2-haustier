@@ -4,17 +4,19 @@ import Vue from 'vue'
 import './plugins/bootstrap-vue'
 import App from './App.vue'
 import VueSocketIO from 'vue-socket.io'
+import router from './router'
 
 Vue.config.productionTip = false
 
 Vue.use(new VueSocketIO({
-    debug: true,
-    connection: 'https://hal.hfg.design:10000/lab_control', //WICHTIG: Hier nach dem Slash den Namen eures Bots angeben (wie auf dem Pi festgelegt)
+    debug: false,
+    connection: 'https://hal.hfg.design:10000/', //WICHTIG: Hier nach dem Slash den Namen eures Bots angeben (wie auf dem Pi festgelegt)
     options: {
       useConnectionNamespace: true
     }
 }))
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')
