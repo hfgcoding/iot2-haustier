@@ -41,7 +41,7 @@
             <b-col>
                 <strong>Im Moment aktiv (klicken um zu den Details zu gelangen):</strong>
                 <ul>
-                    <li v-for="(client, key) in clientData" v-bind:key="client.socket">
+                    <li v-for="(client, key) in clientData" v-bind:key="`${key}-${client.socket}`">
                         <a :href="'#'+key">{{key}}</a>
                     </li>
                 </ul>
@@ -87,7 +87,7 @@
                                 <td><strong>Queue Frontends</strong></td>
                                 <td>
                                     <ul>
-                                        <li v-for="fc in client.queue" v-bind:key="fc.id">
+                                        <li v-for="fc in client.queue" v-bind:key="`${fc.id}-${fc.name}`">
                                             {{fc.name}} (<small>{{fc.id}}</small>)
                                         </li>
                                     </ul>
