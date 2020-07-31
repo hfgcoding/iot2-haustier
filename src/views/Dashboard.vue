@@ -172,10 +172,10 @@
             return {
                 connected: false,
                 stats: {
-                    mem: {},
+                    mem: {total:1, used:1},
                     proc: {},
-                    load: {},
-                    net: [{},{}]
+                    load: { avgload:0, currentload:0, currentload_idle: 0},
+                    net: [{},{rx_sec:0, tx_sec:0}]
                 },
                 clientData: {}
             }
