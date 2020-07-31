@@ -47,7 +47,7 @@
                 </ul>
             </b-col>
         </b-row>
-        <b-row class="mb-4 pb-3 pt-3 mt-5" v-for="(client, key) in clientData" v-bind:key="client.socket"
+        <b-row class="mb-4 pb-3 pt-3 mt-5" v-for="(client, key) in clientData" v-bind:key="`${key}-${client.socket}`"
             style="background-color:#efefef;">
             <b-col>
                 <a :name="key" />
@@ -77,10 +77,10 @@
                                         :href="'http://hal.hfg.design:50005/still-'+client.port+'.jpg'">http://hal.hfg.design:50005/still-{{client.port}}.jpg</a>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr v-if="client.port != undefined">
                                 <td><strong>Externer SSH</strong></td>
                                 <td>
-                                    <pre>ssh pi@hal.hfg.design -p 5{{client.port.substr(1,2)}}22</pre>
+                                    <pre>ssh pi@hal.hfg.design -p 5{{client.port.toString().substr(1,2)}}22</pre>
                                 </td>
                             </tr>
                             <tr>
