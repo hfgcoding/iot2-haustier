@@ -2,14 +2,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Dashboard from '../views/Dashboard.vue'
+import Landing from '../views/Landing.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/landing',
+    name: 'IoT2 Bots',
+    component: Landing
   },
   {
     path: '/home',

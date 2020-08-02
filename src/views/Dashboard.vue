@@ -19,8 +19,8 @@
                 <p><strong>Total: </strong>{{(stats.mem.total/1024/1024).toFixed(2)}} MB | <strong>Used:
                     </strong>{{(stats.mem.used/1024/1024).toFixed(2)}} MB | <strong>% used:
                     </strong>{{((stats.mem.used/stats.mem.total)*100).toFixed(2)}} % </p>
-                <p><strong>Empfangen / sec: </strong>{{(stats.net[1].rx_sec/1024/1024).toFixed(2)}} MBit |
-                    <strong>Senden / sec: </strong>{{(stats.net[1].tx_sec/1024/1024).toFixed(2)}} MBit</p>
+                <p><strong>Empfangen / sec: </strong>{{(stats.net[1].rx_sec/1024/100).toFixed(2)}} MBit |
+                    <strong>Senden / sec: </strong>{{(stats.net[1].tx_sec/1024/100).toFixed(2)}} MBit</p>
                 <p><strong><a v-b-toggle.collapse-1>{{stats.proc.all}} Prozesse (klicken zum aufklappen)</a></strong>
                 </p>
                 <b-collapse id="collapse-1" class="mt-2">
@@ -55,7 +55,7 @@
                 <hr />
                 <b-row>
                     <b-col cols="3">
-                        <img :src="'http://hal.hfg.design:50005/still-'+client.port+'.jpg'" class="still_thumb">
+                        <img :src="'http://hal.hfg.design:50005/still-'+client.port+'.jpg?v='+imgRand" class="still_thumb">
                     </b-col>
                     <b-col>
                         <table class="inline_table">
@@ -119,7 +119,9 @@
 <script>
     export default {
         mounted() {
-
+            setInterval(() => {
+                this.imgRand = Math.random().toString().substr(2,10);
+            }, 5000);
         },
         methods: {
             compareProcs: function (a, b) {
@@ -177,7 +179,8 @@
                     load: { avgload:0, currentload:0, currentload_idle: 0},
                     net: [{},{rx_sec:0, tx_sec:0}]
                 },
-                clientData: {}
+                clientData: {},
+                imgRand: "initial"
             }
         },
         computed: {
