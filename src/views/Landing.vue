@@ -53,7 +53,7 @@
                 connected: false,
                 clientData: {},
                 imgRand: "initial",
-                whitelist: ["lisabot_control","tarsbot_control","marcbot_control"]
+                whitelist: ["lisabot_control","tarsbot_control","marcbot_control","linnbot_control"]
             }
         },
         methods: {
@@ -65,6 +65,8 @@
                         return "Spidercam 2D";
                     case "marcbot_control":
                         return "Gartenbot";
+                    case "linnbot_control":
+                        return "Kameraslider-Bot";
                     default:
                         return inname;
                 }
@@ -77,6 +79,8 @@
                         return "https://master.d13kt0ieexnpov.amplifyapp.com/";
                     case "marcbot_control":
                         return "https://master.d2um57wk9lhggc.amplifyapp.com/";
+                    case "linnbot_control":
+                        return "https://master.d3pweseaqhnk54.amplifyapp.com/";
                     default:
                         return "#";
                 }
