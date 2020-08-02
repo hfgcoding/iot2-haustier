@@ -53,7 +53,7 @@
                 connected: false,
                 clientData: {},
                 imgRand: "initial",
-                whitelist: ["lisabot_control","tarsbot_control","marcbot_control"]
+                whitelist: ["lisabot_control","tarsbot_control","marcbot_control","linnbot_control"]
             }
         },
         methods: {
