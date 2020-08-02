@@ -1,5 +1,6 @@
 <template>
     <div class="mc_container">
+            <div v-if="clientsAsArray.length == 0">Leider keine Roboter online :(</div>
             <div v-for="(item, index) in clientsAsArray" v-bind:key="index" class="minicard">
                 <a :href="mapFrontendURL(item[0])" target="_blank">
                     <div class="mini_thumb">
@@ -88,6 +89,7 @@
         },
         computed: {
             clientsAsArray() {
+                if(this.clientData == undefined || this.clientData == null) return [];
                 return Object.entries(this.clientData)
             }
         }
